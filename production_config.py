@@ -3,8 +3,8 @@ import os
 class Config:
     SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "postgresql://user:password@host:port/dbname")
-    
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")  
+      
     # Mail settings
     MAIL_SERVER = "smtp.gmail.com"
     MAIL_PORT = 587
