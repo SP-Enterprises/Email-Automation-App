@@ -58,24 +58,24 @@ login_manager.login_view = "login"
 csrf = CSRFProtect(app)
 csrf.init_app(app)
 
-@app.route("/init-db", methods=["GET"])
-@login_required
-def init_db():
-    if current_user.email != "connectspenterprise@gmail.com":  # Replace with your email
-        flash("Unauthorized access.", "danger")
-        return redirect(url_for("dashboard"))
-    try:
-        db.create_all()
-        db.session.commit()
-        flash("Database initialized successfully!", "success")
-    except Exception as e:
-        flash(f"Error initializing database: {str(e)}", "danger")
-    return redirect(url_for("dashboard"))
+# @app.route("/init-db", methods=["GET"])
+# @login_required
+# def init_db():
+#     if current_user.email != "connectspenterprise@gmail.com":  # Replace with your email
+#         flash("Unauthorized access.", "danger")
+#         return redirect(url_for("dashboard"))
+#     try:
+#         db.create_all()
+#         db.session.commit()
+#         flash("Database initialized successfully!", "success")
+#     except Exception as e:
+#         flash(f"Error initializing database: {str(e)}", "danger")
+#     return redirect(url_for("dashboard"))
 
-database_url = os.getenv("DATABASE_URL")
-if database_url and database_url.startswith("postgres://"):
-    database_url = database_url.replace("postgres://", "postgresql://", 1)
-app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+# database_url = os.getenv("DATABASE_URL")
+# if database_url and database_url.startswith("postgres://"):
+#     database_url = database_url.replace("postgres://", "postgresql://", 1)
+# app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 
 @login_manager.user_loader
 def load_user(user_id):
