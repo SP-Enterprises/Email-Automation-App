@@ -72,6 +72,7 @@ csrf.init_app(app)
 #         flash(f"Error initializing database: {str(e)}", "danger")
 #     return redirect(url_for("dashboard"))
 
+
 # database_url = os.getenv("DATABASE_URL")
 # if database_url and database_url.startswith("postgres://"):
 #     database_url = database_url.replace("postgres://", "postgresql://", 1)
